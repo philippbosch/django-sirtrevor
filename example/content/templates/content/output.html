@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+    <h1>django-sirtrevor example</h1>
+    <p class="lead">This is how the rendered output looks like.</p>
+{% endblock %}
+
+{% block content %}
+    <div class="well">
+        <h1>{{ data.headline }}</h1>
+        <p>{{ data.content|linebreaks }}</p>
+    </div>
+{% endblock %}
