@@ -2,6 +2,7 @@ import json
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.views.generic import FormView, CreateView, DetailView
+from sirtrevor import SirTrevorContent
 from .forms import ContentForm, ContentModelForm
 from .models import Content
 
@@ -49,7 +50,10 @@ class PlainFormView(FormView):
     template_name = 'content/form.html'
 
     def form_valid(self, form):
-        return render(self.request, 'content/output.html', dict(data=self.request.POST))
+        obj = {
+            'content': SirTrevorContent(form.cleaned_data['content'])
+        }
+        return render(self.request, 'content/output.html', dict(object=obj))
 
 
 class ModelFormView(CreateView):
@@ -67,7 +71,3 @@ class ModelFormView(CreateView):
 class ModelDisplayView(DetailView):
     model = Content
     template_name = 'content/output.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context

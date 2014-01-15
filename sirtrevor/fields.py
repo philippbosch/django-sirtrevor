@@ -1,20 +1,9 @@
 import json
 from django.db import models
-from django.template.loader import render_to_string
 from django.utils.six import with_metaclass
 from django.utils.translation import ugettext_lazy as _
+from . import SirTrevorContent
 from .forms import SirTrevorFormField
-
-
-class SirTrevorContent(str):
-    @property
-    def html(self):
-        html = []
-        content = json.loads(self)
-        for block in content['data']:
-            template_name = 'sirtrevor/blocks/%s.html' % block['type']
-            html.append(render_to_string(template_name, block['data']))
-        return ''.join(html)
 
 
 class SirTrevorField(with_metaclass(models.SubfieldBase, models.Field)):

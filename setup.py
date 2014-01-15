@@ -1,13 +1,14 @@
 import os
 from setuptools import setup
+from sirtrevor import __version__
+
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
-
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-sirtrevor',
-    version='0.1',
+    version=__version__,
     packages=['sirtrevor'],
     include_package_data=True,
     license='MIT License',
@@ -16,7 +17,7 @@ setup(
     url='https://github.com/philippbosch/django-sirtrevor/',
     author='Philipp Bosch',
     author_email='hello@pb.io',
-    install_requires=['markdown2'],
+    install_requires=['markdown2', 'django-appconf'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block content %}
+    <h4>Rendered HTML</h4>
     <div class="well">
-        <h4>JSON</h4>
-        <pre>{{ object.content }}</pre>
-        <h4>Rendered HTML</h4>
         {{ object.content.html|safe }}
     </div>
+    <h4>JSON</h4>
+    <pre>{{ object.content }}</pre>
 {% endblock %}
