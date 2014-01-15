@@ -16,6 +16,7 @@ setup(
     url='https://github.com/philippbosch/django-sirtrevor/',
     author='Philipp Bosch',
     author_email='hello@pb.io',
+    install_requires=['markdown2'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

@@ -7,7 +7,9 @@
 
 {% block content %}
     <div class="well">
-        <h1>{{ data.headline }}</h1>
-        <p>{{ data.content|linebreaks }}</p>
+        <h4>JSON</h4>
+        <pre>{{ object.content }}</pre>
+        <h4>Rendered HTML</h4>
+        {{ object.content.html|safe }}
     </div>
 {% endblock %}

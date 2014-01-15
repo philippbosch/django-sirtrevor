@@ -1,0 +1,5 @@
+{% load markdown2 %}
+<div class="content-block quote-block">
+    {{ text|markdown }}
+    {% if cite %}<cite class="quote">&ndash; {{ cite }}</cite>{% endif %}
+</div>
