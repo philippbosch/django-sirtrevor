@@ -29,40 +29,43 @@ Quick start
         content = SirTrevorField()
         ...
 
-4. Now you can …::
+4. Now you can …
 
-   a) … see it in action in the Django admin
-   b) … create a ``ModelForm`` from your model
-   c) … create a plain ``Form`` and use ``sirtrevor.forms.SirTrevorFormField``
-   d) … use ``sirtrevor.widgets.SirTrevorWidget`` as a widget replacement for a ``Textarea``
+   - see it in action in the Django admin
+   - create a ``ModelForm`` from your model
+   - create a plain ``Form`` and use ``sirtrevor.forms.SirTrevorFormField``
+   - use ``sirtrevor.widgets.SirTrevorWidget`` as a widget replacement for a ``Textarea``
 
 
 Configuration
 -------------
 
-`Sir Trevor` has a few `configuration options`_. You can customize most of them
-in your `settings.py` (applies to all widgets in your project) or on a per-widget
-basis as ``kwargs`` for ``SirTrevorWidget``.
+`Sir Trevor` has a few `configuration options`_. You can customize most of them 
+project-wide in your ``settings.py`` or on a per-widget basis as ``kwargs`` for 
+``SirTrevorWidget``.
+
+**Available options** (``CONFIGURATION_SETTINGS`` / ``widget_kwargs``):
+
 
 ``SIRTREVOR_BLOCK_TYPES`` / ``st_block_types``
     Specify an array of block types to use with the editor.
-    *Defaults to ``['Text', 'List', 'Quote', 'Image', 'Video', 'Tweet', 'Heading']``*
+    Defaults to ``['Text', 'List', 'Quote', 'Image', 'Video', 'Tweet', 'Heading']``
 
 ``SIRTREVOR_DEFAULT_TYPE`` / ``st_default_type``
     Specify a default block to start the editor with.
-    *Defaults to ``None``*
+    Defaults to ``None``
 
 ``SIRTREVOR_BLOCK_LIMIT`` / ``st_block_limit``
     Set an overall total number of blocks that can be displayed.
-    *Defaults to ``0``*
+    Defaults to ``0``
 
 ``SIRTREVOR_BLOCK_TYPE_LIMITS`` / ``st_block_type_limits``
     Set a limit on the number of blocks that can be displayed by its type.
-    *Defaults to ``{}``*
+    Defaults to ``{}``
 
 ``SIRTREVOR_REQUIRED`` / ``st_required``
     Specify which block types are required for validatation.
-    *Defaults to ``None``*
+    Defaults to ``None``
 
 
 License
