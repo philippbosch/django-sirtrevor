@@ -1,0 +1,27 @@
+{
+  "name": "django-sirtrevor",
+  "version": "0.1.0",
+  "homepage": "https://github.com/iraycd/django-sirtrevor",
+  "authors": [
+    "Philipp Bosch <hello@pb.io>",
+    "Ray Ch <i@iraycd.com>"
+  ],
+  "keywords": [
+    "Django",
+    "SirTrevor",
+    "Sir",
+    "Trevor"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/sirtrevor/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sir-trevor-js": "*"
+  }
+}
