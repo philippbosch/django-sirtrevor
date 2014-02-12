@@ -1,19 +1,20 @@
-import os
-from setuptools import setup
-from sirtrevor import __version__
-
-
-README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+try:
+    from setuptools import setup
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup
 
 setup(
     name='django-sirtrevor',
-    version=__version__,
+    version= '0.1.0',
     packages=['sirtrevor'],
     include_package_data=True,
     license='MIT License',
     description='A simple Django app that provides a model field and corresponding widget based on the fantastic Sir Trevor project',
-    long_description=README,
+    long_description=open('README.rst', 'r').read(),
     url='https://github.com/philippbosch/django-sirtrevor/',
     author='Philipp Bosch',
     author_email='hello@pb.io',
