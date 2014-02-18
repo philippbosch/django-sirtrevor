@@ -1,7 +1,7 @@
 import json
 from django.template.loader import render_to_string
 
-__version__ = (0, 1, 0)
+__version__ = (0, 1, 1)
 
 class SirTrevorContent(str):
     @property
