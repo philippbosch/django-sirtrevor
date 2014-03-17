@@ -2,4 +2,4 @@ include LICENSE
 include README.rst
 recursive-include sirtrevor/static *
 recursive-include sirtrevor/templates *
-recursive-include sirtrevor/templatestags *
+recursive-include sirtrevor/templatetags *
