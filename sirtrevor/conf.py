@@ -8,3 +8,4 @@ class SirTrevorConf(AppConf):
     BLOCK_LIMIT = 0
     BLOCK_TYPE_LIMITS = {}
     REQUIRED = []
+    UPLOAD_URL = '/images'
