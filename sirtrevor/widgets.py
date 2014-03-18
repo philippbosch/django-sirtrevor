@@ -17,9 +17,14 @@ class SirTrevorWidget(forms.Textarea):
             'blockLimit': kwargs.pop('st_block_limit', settings.SIRTREVOR_BLOCK_LIMIT),
             'blockTypeLimits': kwargs.pop('st_block_type_limits', settings.SIRTREVOR_BLOCK_TYPE_LIMITS),
             'required': kwargs.pop('st_required', settings.SIRTREVOR_REQUIRED),
+        }
+        kwargs['attrs']['data-sirtrevor-conf'] = json.dumps(sirtrevor_conf)
+
+        sirtrevor_defaults = {
             'uploadUrl': kwargs.pop('st_upload_url', settings.SIRTREVOR_UPLOAD_URL),
         }
-        kwargs['attrs']['data-sirtrevor'] = json.dumps(sirtrevor_conf)
+
+        kwargs['attrs']['data-sirtrevor-defaults'] = json.dumps(sirtrevor_defaults)
 
         super(SirTrevorWidget, self).__init__(*args, **kwargs)
 
