@@ -4,6 +4,14 @@ django-sirtrevor
 **django-sirtrevor** is a simple Django app that provides a content editing
 widget based on the fantastic `Sir Trevor`_ project.
 
+~~~~
+
+**IMPORTANT:** This package should be considered (pre-)alpha. It is by no
+means feature-complete or bug-free. It is a work-in-progress and right now
+lacks some `key features`_.
+
+~~~~
+
 
 Quick start
 -----------
@@ -77,3 +85,4 @@ MIT_
 .. _Sir Trevor: http://madebymany.github.io/sir-trevor-js/
 .. _MIT: http://philippbosch.mit-license.org/
 .. _configuration options: http://madebymany.github.io/sir-trevor-js/docs.html#2
+.. _key features: https://github.com/philippbosch/django-sirtrevor/issues/2
