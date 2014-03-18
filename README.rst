@@ -19,7 +19,11 @@ Quick start
         'sirtrevor',
     )
 
-3. Create a model that makes use of ``SirTrevorField``::
+3. Add sir trevor urls
+    
+    url(r'', include('sirtrevor.urls')),
+
+4. Create a model that makes use of ``SirTrevorField``::
 
     from django.db import models
     from sirtrevor.fields import SirTrevorField
@@ -29,7 +33,7 @@ Quick start
         content = SirTrevorField()
         ...
 
-4. Now you can …
+5. Now you can …
 
    - see it in action in the Django admin
    - create a ``ModelForm`` from your model
