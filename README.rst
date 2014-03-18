@@ -27,7 +27,11 @@ Quick start
         'sirtrevor',
     )
 
-3. Create a model that makes use of ``SirTrevorField``::
+3. Add sir trevor urls
+    
+    url(r'', include('sirtrevor.urls')),
+
+4. Create a model that makes use of ``SirTrevorField``::
 
     from django.db import models
     from sirtrevor.fields import SirTrevorField
@@ -37,7 +41,7 @@ Quick start
         content = SirTrevorField()
         ...
 
-4. Now you can …
+5. Now you can …
 
    - see it in action in the Django admin
    - create a ``ModelForm`` from your model
@@ -75,6 +79,13 @@ project-wide in your ``settings.py`` or on a per-widget basis as ``kwargs`` for
     Specify which block types are required for validatation.
     Defaults to ``None``
 
+``SIRTREVOR_UPLOAD_URL`` / ``st_upload_url``
+    Specify url for AJAX image uploads.
+    Defaults to ``attachments``
+
+``SIRTREVOR_UPLOAD_PATH``
+    Specify where to upload images to within media path (not configurable via widget kwargs).
+    Defaults to ``attachments``
 
 License
 -------
