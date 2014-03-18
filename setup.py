@@ -9,7 +9,7 @@ except ImportError:
 
 setup(
     name='django-sirtrevor',
-    version= '0.1.3',
+    version= '0.1.4',
     packages=['sirtrevor'],
     include_package_data=True,
     license='MIT License',
@@ -18,7 +18,7 @@ setup(
     url='https://github.com/philippbosch/django-sirtrevor/',
     author='Philipp Bosch',
     author_email='hello@pb.io',
-    install_requires=['markdown2', 'django-appconf', 'django'],
+    install_requires=['markdown2', 'django-appconf', 'django', 'six'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
