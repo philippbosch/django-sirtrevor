@@ -67,6 +67,13 @@ project-wide in your ``settings.py`` or on a per-widget basis as ``kwargs`` for
     Specify which block types are required for validatation.
     Defaults to ``None``
 
+``SIRTREVOR_UPLOAD_URL`` / ``st_upload_url``
+    Specify url for AJAX image uploads
+    Defaults to ``attachments``
+
+``SIRTREVOR_UPLOAD_PATH``
+    Specify where to upload images to within media path (not configurable via widget kwargs)
+    Defaults to ``attachments``
 
 License
 -------

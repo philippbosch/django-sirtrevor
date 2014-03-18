@@ -1,6 +1,5 @@
 import os
 import json
-from django.conf import settings
 from django.contrib.auth.decorators import user_passes_test
 from django.core.files.storage import default_storage
 from django.http import HttpResponse
@@ -8,9 +7,10 @@ from django.utils.text import slugify
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from .forms import AttachmentForm
+from .conf import settings
 
 AUTH_TEST = lambda u: u.is_staff
-UPLOAD_PATH = 'sirtrevor'
+UPLOAD_PATH = settings.SIRTREVOR_UPLOAD_PATH
 
 
 @csrf_exempt
