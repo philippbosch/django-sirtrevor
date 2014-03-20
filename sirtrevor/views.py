@@ -33,8 +33,11 @@ def attachment(request):
         name = os.path.join(UPLOAD_PATH, safe_name)
 
         if(IMAGE_RESIZE is not None):
-            i = importlib.import_module(IMAGE_RESIZE)
-            file_ = i.resizeattachment(file_)
+            try:
+                i = importlib.import_module(IMAGE_RESIZE)
+                file_ = i.resizeattachment(file_)
+            except AttributeError:
+                pass
 
         path = default_storage.save(name, file_)
         url = default_storage.url(path)
