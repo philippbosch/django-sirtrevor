@@ -1,5 +1,6 @@
 import os
 import json
+import importlib
 from django.contrib.auth.decorators import user_passes_test
 from django.core.files.storage import default_storage
 from django.http import HttpResponse
@@ -9,8 +10,10 @@ from django.views.decorators.http import require_POST
 from .forms import AttachmentForm
 from .conf import settings
 
+
 AUTH_TEST = lambda u: u.is_staff
 UPLOAD_PATH = settings.SIRTREVOR_UPLOAD_PATH
+IMAGE_RESIZE = settings.SIRTREVOR_ATTACHMENT_RESIZE
 
 
 @csrf_exempt
@@ -28,6 +31,11 @@ def attachment(request):
         file_name, extension = os.path.splitext(file_.name)
         safe_name = '{0}{1}'.format(slugify(file_name), extension)
         name = os.path.join(UPLOAD_PATH, safe_name)
+
+        if(IMAGE_RESIZE is not None):
+            i = importlib.import_module(IMAGE_RESIZE)
+            file_ = i.resizeattachment(file_)
+
         path = default_storage.save(name, file_)
         url = default_storage.url(path)
         return HttpResponse(json.dumps({'file': {'url': url, 'filename': path}}))

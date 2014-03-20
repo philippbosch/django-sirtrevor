@@ -10,3 +10,4 @@ class SirTrevorConf(AppConf):
     REQUIRED = []
     UPLOAD_URL = '/attachments/'
     UPLOAD_PATH = 'attachments'
+    ATTACHMENT_RESIZE = None
