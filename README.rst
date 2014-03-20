@@ -115,7 +115,6 @@ def resizeattachment(file_):
                                   content_type='image/jpeg')
 
     except Exception as ex:
-        print type(ex).__name__
         return file_
 
 ``
