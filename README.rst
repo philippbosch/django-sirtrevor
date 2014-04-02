@@ -27,9 +27,9 @@ Quick start
         'sirtrevor',
     )
 
-3. Add sir trevor urls
-    
-    url(r'', include('sirtrevor.urls')),
+3. Add sir trevor urls::
+
+    url(r'^sirtrevor/', include('sirtrevor.urls')),
 
 4. Create a model that makes use of ``SirTrevorField``::
 
@@ -46,15 +46,17 @@ Quick start
    - see it in action in the Django admin
    - create a ``ModelForm`` from your model
    - create a plain ``Form`` and use ``sirtrevor.forms.SirTrevorFormField``
-   - use ``sirtrevor.widgets.SirTrevorWidget`` as a widget replacement for a ``Textarea``
+   - use ``sirtrevor.widgets.SirTrevorWidget`` as a widget replacement for a
+     ``Textarea``
 
 
 Configuration
 -------------
 
-`Sir Trevor` has a few `configuration options`_. You can customize most of them 
-project-wide in your ``settings.py`` or some on a per-widget basis as ``kwargs`` for 
-``SirTrevorWidget``.
+`Sir Trevor` has a few `configuration options`_. You can customize most of them
+project-wide in your ``settings.py`` or some on a per-widget basis as
+``kwargs`` for ``SirTrevorWidget``.
+
 
 **Available options** (``CONFIGURATION_SETTINGS`` / ``widget_kwargs``):
 
@@ -84,20 +86,26 @@ project-wide in your ``settings.py`` or some on a per-widget basis as ``kwargs``
     Defaults to ``attachments``
 
 ``SIRTREVOR_UPLOAD_PATH``
-    Specify where to upload images to within media path (not configurable via widget kwargs).
+    Specify where to upload images to within media path (not configurable via
+    widget kwargs).
     Defaults to ``attachments``
 
 ``SIRTREVOR_ATTACHMENT_RESIZE``
-    Specify a module that has a resizeattachment method this will be run before saving the image. (not configurable via widget kwargs).
+    Specify a module that has a `resizeattachment` method this will be run
+    before saving the image. (not configurable via widget kwargs).
     Defaults to ``attachments``
 
 
 Resizing Images
 ---------------
 
-You can resize your upload images by implementing a ``resizeattachemnt()`` method in a module specified by ``SIRTREVOR_ATTACHMENT_RESIZE``. The first argument will be the file object and the method must return a SimpleUploadFile object. 
+You can resize your upload images by implementing a ``resizeattachment()``
+method in a module specified by ``SIRTREVOR_ATTACHMENT_RESIZE``. The first
+argument will be the file object and the method must return a SimpleUploadFile
+object.
 
-Example implemnted in utils.py in an app called core. Setting set to: `core.utils`.
+Example implemented in utils.py in an app called core. Setting set to:
+`core.utils`.
 
 ``
 from PIL import Image

@@ -32,7 +32,7 @@ def attachment(request):
         safe_name = '{0}{1}'.format(slugify(file_name), extension)
         name = os.path.join(UPLOAD_PATH, safe_name)
 
-        if(IMAGE_RESIZE is not None):
+        if IMAGE_RESIZE is not None:
             try:
                 i = importlib.import_module(IMAGE_RESIZE)
                 file_ = i.resizeattachment(file_)

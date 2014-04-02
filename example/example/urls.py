@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(r'^form/$', PlainFormView.as_view(), name='form_view'),
     url(r'^model-form/$', ModelFormView.as_view(), name='model_form_view'),
     url(r'^model-form/(?P<pk>\d+)/$', ModelDisplayView.as_view(), name='model_display_view'),
+    url(r'^sirtrevor/', include('sirtrevor.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
