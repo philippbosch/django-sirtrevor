@@ -8,3 +8,6 @@ class SirTrevorConf(AppConf):
     BLOCK_LIMIT = 0
     BLOCK_TYPE_LIMITS = {}
     REQUIRED = []
+    UPLOAD_URL = '/attachments/'
+    UPLOAD_PATH = 'attachments'
+    ATTACHMENT_RESIZE = None
