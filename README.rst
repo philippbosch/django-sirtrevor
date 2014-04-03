@@ -4,14 +4,6 @@ django-sirtrevor
 **django-sirtrevor** is a simple Django app that provides a content editing
 widget based on the fantastic `Sir Trevor`_ project.
 
-~~~~
-
-**IMPORTANT:** This package should be considered (pre-)alpha. It is by no
-means feature-complete or bug-free. It is a work-in-progress and right now
-lacks some `key features`_.
-
-~~~~
-
 
 Quick start
 -----------
@@ -135,7 +127,7 @@ Custom Blocks
 
 Here is a little step-by-step guide:
 
-``myapp/blocks.py``::
+**myapp/blocks.py**::
 
     from sirtrevor.blocks import BaseBlock
 
@@ -146,7 +138,7 @@ Here is a little step-by-step guide:
             js = ['sirtrevor/blocks/mycustomblock.js']
 
 
-``myapp/models.py``::
+**myapp/models.py**::
 
     import sirtrevor
     from .blocks import MyCustomBlock
@@ -154,16 +146,7 @@ Here is a little step-by-step guide:
     sirtrevor.register_block(MyCustomBlock)
 
 
-``settings.py``::
-
-    # ...
-
-    SIRTREVOR_BLOCK_TYPES = ['Text', '...', 'MyCustomName']
-
-    # ...
-
-
-``myapp/static/sirtrevor/blocks/mycustomblock.js``
+**myapp/static/sirtrevor/blocks/mycustomblock.js**::
 
     SirTrevor.Blocks.File = SirTrevor.Block.extend({
         type: 'mycustomblock',
@@ -174,7 +157,26 @@ Please refer to *Sir Trevor*'s docs regarding `custom blocks`_ for details
 about the JavaScript part of a custom block.
 
 
-``myapp/templates/sirtrevor/blocks/mycustomblock.html
+**myapp/templates/sirtrevor/blocks/mycustomblock.html**::
+
+    <div class="content-block mycustom-block">
+        <!-- Whatever JSON the custom block creates is available in the template -->
+    </div>
+
+
+**settings.py**::
+
+    # ...
+
+    SIRTREVOR_BLOCK_TYPES = ['Text', '...', 'MyCustomName']
+
+    # ...
+
+
+For reference please check out `django-sirtrevor-file`_ which implements a
+simple block type for file downloads.
+
+
 
 License
 -------
@@ -188,3 +190,4 @@ MIT_
 .. _key features: https://github.com/philippbosch/django-sirtrevor/issues/2
 .. _below: #resizing-images
 .. _custom blocks: http://madebymany.github.io/sir-trevor-js/docs.html#4
+.. _django-sirtrevor-file: https://github.com/philippbosch/django-sirtrevor-file
