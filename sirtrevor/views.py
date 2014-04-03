@@ -47,6 +47,7 @@ def attachment(request):
 
         data['path'] = default_storage.save(name, file_)
         data['url'] = default_storage.url(data['path'])
+        data['name'] = os.path.split(data['path'])[1]
         data['size'] = file_.size
 
         return HttpResponse(json.dumps({'file': data}))
