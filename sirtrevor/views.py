@@ -24,28 +24,31 @@ def attachment(request):
     form = AttachmentForm(request.POST, request.FILES)
     if form.is_valid():
         file_ = form.cleaned_data['attachment']
-        image_types = ['image/png', 'image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif']
-        if file_.content_type not in image_types:
-            return HttpResponse(status=403, content='Bad image format')
         file_name, extension = os.path.splitext(file_.name)
         safe_name = '{0}{1}'.format(slugify(file_name), extension)
         name = os.path.join(settings.SIRTREVOR_UPLOAD_PATH, safe_name)
 
-        if settings.SIRTREVOR_ATTACHMENT_PROCESSOR is not None:
-            if callable(settings.SIRTREVOR_ATTACHMENT_PROCESSOR):
-                processor = settings.SIRTREVOR_ATTACHMENT_PROCESSOR
-            else:
-                module, func = settings.SIRTREVOR_ATTACHMENT_PROCESSOR.rsplit('.', 1)
-                processor = getattr(importlib.import_module(module), func)
-            file_ = processor(file_)
+        data = {'type': file_.content_type}
 
-        try:
-            size = Image.open(file_).size
-        except:
-            size = None
+        image_types = ['image/png', 'image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif']
+        if file_.content_type in image_types:
+            if settings.SIRTREVOR_ATTACHMENT_PROCESSOR is not None:
+                if callable(settings.SIRTREVOR_ATTACHMENT_PROCESSOR):
+                    processor = settings.SIRTREVOR_ATTACHMENT_PROCESSOR
+                else:
+                    module, func = settings.SIRTREVOR_ATTACHMENT_PROCESSOR.rsplit('.', 1)
+                    processor = getattr(importlib.import_module(module), func)
+                file_ = processor(file_)
 
-        path = default_storage.save(name, file_)
-        url = default_storage.url(path)
-        return HttpResponse(json.dumps({'file': {'url': url, 'filename': path, 'size': size}}))
+            try:
+                data['dimensions'] = Image.open(file_).size
+            except:
+                pass
+
+        data['path'] = default_storage.save(name, file_)
+        data['url'] = default_storage.url(data['path'])
+        data['size'] = file_.size
+
+        return HttpResponse(json.dumps({'file': data}))
     else:
         return HttpResponse('Error')

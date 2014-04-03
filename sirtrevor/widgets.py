@@ -2,7 +2,9 @@ import json
 from django import forms
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.forms.widgets import Media
 from django.utils.encoding import force_text
+from . import custom_blocks_registry
 
 
 class SirTrevorWidget(forms.Textarea):
@@ -33,6 +35,20 @@ class SirTrevorWidget(forms.Textarea):
         attrs['data-sirtrevor-defaults'] = json.dumps(sirtrevor_defaults)
 
         return attrs
+
+    def _media(self):
+        media = Media(css=self.Media.css, js=self.Media.js)
+        for name in settings.SIRTREVOR_BLOCK_TYPES:
+            if name in custom_blocks_registry:
+                block = custom_blocks_registry[name]
+                block_media = Media(
+                    css=getattr(block.Media, 'css', {}),
+                    js=getattr(block.Media, 'js', [])
+                )
+                media += block_media
+        return media
+
+    media = property(_media)
 
     class Media:
         js = [

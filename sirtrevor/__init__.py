@@ -15,3 +15,9 @@ class SirTrevorContent(six.text_type):
         return u''.join(html)
 
 
+custom_blocks_registry = {}
+
+def register_block(block, name=None):
+    if name is None:
+        name = block.name
+    custom_blocks_registry[name] = block
