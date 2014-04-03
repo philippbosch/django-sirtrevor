@@ -104,36 +104,28 @@ method in a module specified by ``SIRTREVOR_ATTACHMENT_RESIZE``. The first
 argument will be the file object and the method must return a SimpleUploadFile
 object.
 
-Example implemented in utils.py in an app called core. Setting set to:
-`core.utils`.
-
-``
-from PIL import Image
-from StringIO import StringIO
-from django.core.files.uploadedfile import SimpleUploadedFile
+Example implemented in utils.py in an app called core. Setting set to
+`core.utils`::
 
 
-def resizeattachment(file_):
+    from PIL import Image
+    from StringIO import StringIO
+    from django.core.files.uploadedfile import SimpleUploadedFile
 
-    size = (1024, 9999)
 
-    try:
-        temp = StringIO()
+    def resizeattachment(file_):
+        size = (1024, 9999)
+        try:
+            temp = StringIO()
+            image = Image.open(file_)
+            image.thumbnail(size, Image.ANTIALIAS)
+            image.save(temp, 'jpeg')
+            temp.seek(0)
+            return SimpleUploadedFile(file_.name, temp.read(), content_type='image/jpeg')
+        except Exception as ex:
+            return file_
 
-        image = Image.open(file_)
-        image.thumbnail(size, Image.ANTIALIAS)
 
-        image.save(temp, 'jpeg')
-        temp.seek(0)
-
-        return SimpleUploadedFile(file_.name,
-                                  temp.read(),
-                                  content_type='image/jpeg')
-
-    except Exception as ex:
-        return file_
-
-``
 
 License
 -------
