@@ -127,6 +127,54 @@ Example implemented in ``utils.py`` in an app called ``core``.
             return file_
 
 
+Custom Blocks
+-------------
+
+*Sir Trevor* can be extended through `custom blocks`_. Starting with 0.2.1
+*django-sirtrevor* also has basic support for custom blocks.
+
+Here is a little step-by-step guide:
+
+``myapp/blocks.py``::
+
+    from sirtrevor.blocks import BaseBlock
+
+    class MyCustomBlock(BaseBlock):
+        name = 'MyCustomName'
+
+        class Media:
+            js = ['sirtrevor/blocks/mycustomblock.js']
+
+
+``myapp/models.py``::
+
+    import sirtrevor
+    from .blocks import MyCustomBlock
+
+    sirtrevor.register_block(MyCustomBlock)
+
+
+``settings.py``::
+
+    # ...
+
+    SIRTREVOR_BLOCK_TYPES = ['Text', '...', 'MyCustomName']
+
+    # ...
+
+
+``myapp/static/sirtrevor/blocks/mycustomblock.js``
+
+    SirTrevor.Blocks.File = SirTrevor.Block.extend({
+        type: 'mycustomblock',
+        // ...
+    }
+
+Please refer to *Sir Trevor*'s docs regarding `custom blocks`_ for details
+about the JavaScript part of a custom block.
+
+
+``myapp/templates/sirtrevor/blocks/mycustomblock.html
 
 License
 -------
@@ -139,3 +187,4 @@ MIT_
 .. _configuration options: http://madebymany.github.io/sir-trevor-js/docs.html#2
 .. _key features: https://github.com/philippbosch/django-sirtrevor/issues/2
 .. _below: #resizing-images
+.. _custom blocks: http://madebymany.github.io/sir-trevor-js/docs.html#4
