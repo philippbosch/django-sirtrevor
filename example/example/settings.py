@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sirtrevor',
+    'sirtrevor_file',
     'content',
 )
 
@@ -92,4 +93,5 @@ MEDIA_URL = '/media/'
 
 # django-sirtrevor
 
+SIRTREVOR_BLOCK_TYPES = ['Text', 'List', 'Quote', 'Image', 'Video', 'Tweet', 'Heading', 'File']
 SIRTREVOR_ATTACHMENT_PROCESSOR = 'sirtrevor.utils.resize_image_attachment'
