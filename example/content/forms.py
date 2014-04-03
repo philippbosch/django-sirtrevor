@@ -1,5 +1,4 @@
 from django import forms
-from django.db import models
 from sirtrevor.widgets import SirTrevorWidget
 from .models import Content
 

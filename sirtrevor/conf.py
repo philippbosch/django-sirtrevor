@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.urlresolvers import reverse_lazy
 from appconf import AppConf
 
 
@@ -8,6 +9,11 @@ class SirTrevorConf(AppConf):
     BLOCK_LIMIT = 0
     BLOCK_TYPE_LIMITS = {}
     REQUIRED = []
-    UPLOAD_URL = '/sirtrevor/attachments/'
+    UPLOAD_URL = None
     UPLOAD_PATH = 'attachments'
-    ATTACHMENT_RESIZE = None
+    ATTACHMENT_PROCESSOR = None
+
+    def configure_upload_url(self, value):
+        if value is not None:
+            return value
+        return reverse_lazy('sirtrevor_attachments')

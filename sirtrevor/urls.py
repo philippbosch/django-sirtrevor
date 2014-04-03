@@ -9,6 +9,6 @@ urlpatterns = patterns(
     url(
         '^attachments/',
         'sirtrevor.views.attachment',
-        name='attachment'
+        name='sirtrevor_attachments',
     ),
 )

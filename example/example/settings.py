@@ -82,3 +82,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Media files
+
+MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'
+
+
+# django-sirtrevor
+
+SIRTREVOR_ATTACHMENT_PROCESSOR = 'sirtrevor.utils.resize_image_attachment'

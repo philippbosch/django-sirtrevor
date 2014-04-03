@@ -1,6 +1,5 @@
 from django import forms
 from .widgets import SirTrevorWidget
-from django import forms
 
 
 class SirTrevorFormField(forms.CharField):

@@ -20,7 +20,7 @@ Quick start
 
     pip install django-sirtrevor
 
-2. Add `sirtrevor` to your INSTALLED_APPS setting like this::
+2. Add ``sirtrevor`` to your INSTALLED_APPS setting like this::
 
     INSTALLED_APPS = (
         ...
@@ -53,8 +53,8 @@ Quick start
 Configuration
 -------------
 
-`Sir Trevor` has a few `configuration options`_. You can customize most of them
-project-wide in your ``settings.py`` or some on a per-widget basis as
+`Sir Trevor`_ has a few `configuration options`_. You can customize most of
+them project-wide in your ``settings.py`` or some on a per-widget basis as
 ``kwargs`` for ``SirTrevorWidget``.
 
 
@@ -62,58 +62,59 @@ project-wide in your ``settings.py`` or some on a per-widget basis as
 
 
 ``SIRTREVOR_BLOCK_TYPES`` / ``st_block_types``
-    Specify an array of block types to use with the editor.
+    A list of block types to use with the editor.
     Defaults to ``['Text', 'List', 'Quote', 'Image', 'Video', 'Tweet', 'Heading']``
 
 ``SIRTREVOR_DEFAULT_TYPE`` / ``st_default_type``
-    Specify a default block to start the editor with.
+    The default block to start the editor with.
     Defaults to ``None``
 
 ``SIRTREVOR_BLOCK_LIMIT`` / ``st_block_limit``
-    Set an overall total number of blocks that can be displayed.
+    The overall total number of blocks that can be displayed.
     Defaults to ``0``
 
 ``SIRTREVOR_BLOCK_TYPE_LIMITS`` / ``st_block_type_limits``
-    Set a limit on the number of blocks that can be displayed by its type.
+    Limit on the number of blocks that can be displayed by its type.
     Defaults to ``{}``
 
 ``SIRTREVOR_REQUIRED`` / ``st_required``
-    Specify which block types are required for validatation.
+    Mandatory block types that are required for validatation.
     Defaults to ``None``
 
 ``SIRTREVOR_UPLOAD_URL`` / ``st_upload_url``
-    Specify url for AJAX image uploads.
-    Defaults to ``attachments``
+    URL for AJAX image uploads.
+    Defaults to ``/sirtrevor/attachments/`` (depending on where you include
+    django-sirtrevor's URLs in ``urls.py``)
 
 ``SIRTREVOR_UPLOAD_PATH``
-    Specify where to upload images to within media path (not configurable via
-    widget kwargs).
+    Path where to store uploaded images relative to ``MEDIA_ROOT``. (not
+    configurable via widget kwargs)
     Defaults to ``attachments``
 
-``SIRTREVOR_ATTACHMENT_RESIZE``
-    Specify a module that has a `resizeattachment` method this will be run
-    before saving the image. (not configurable via widget kwargs).
-    Defaults to ``attachments``
+``SIRTREVOR_ATTACHMENT_PROCESSOR``
+    A string containing a dotted path to a function that will be run before
+    saving an uploaded image. See `below`_ for more details. (not configurable via
+    widget kwargs)
+    Defaults to ``None``
 
 
 Resizing Images
 ---------------
 
-You can resize your upload images by implementing a ``resizeattachment()``
-method in a module specified by ``SIRTREVOR_ATTACHMENT_RESIZE``. The first
-argument will be the file object and the method must return a SimpleUploadFile
-object.
+You can resize uploaded images by implementing a function somewhere in your
+code and pointing ``SIRTREVOR_ATTACHMENT_PROCESSOR`` to its location. The first
+argument will be the file object and the method must return a
+``SimpleUploadFile`` object.
 
-Example implemented in utils.py in an app called core. Setting set to
-`core.utils`::
-
+Example implemented in ``utils.py`` in an app called ``core``.
+``SIRTREVOR_ATTACHMENT_PROCESSOR`` set to ``core.utils.resize_attachment``::
 
     from PIL import Image
     from StringIO import StringIO
     from django.core.files.uploadedfile import SimpleUploadedFile
 
 
-    def resizeattachment(file_):
+    def resize_attachment(file_):
         size = (1024, 9999)
         try:
             temp = StringIO()
@@ -137,3 +138,4 @@ MIT_
 .. _MIT: http://philippbosch.mit-license.org/
 .. _configuration options: http://madebymany.github.io/sir-trevor-js/docs.html#2
 .. _key features: https://github.com/philippbosch/django-sirtrevor/issues/2
+.. _below: #resizing-images

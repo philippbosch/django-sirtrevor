@@ -1,6 +1,8 @@
 import json
 from django import forms
-from .conf import settings
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.utils.encoding import force_text
 
 
 class SirTrevorWidget(forms.Textarea):
@@ -20,13 +22,17 @@ class SirTrevorWidget(forms.Textarea):
         }
         kwargs['attrs']['data-sirtrevor-conf'] = json.dumps(sirtrevor_conf)
 
-        sirtrevor_defaults = {
-            'uploadUrl': kwargs.pop('st_upload_url', settings.SIRTREVOR_UPLOAD_URL),
-        }
-
-        kwargs['attrs']['data-sirtrevor-defaults'] = json.dumps(sirtrevor_defaults)
-
         super(SirTrevorWidget, self).__init__(*args, **kwargs)
+
+    def build_attrs(self, extra_attrs=None, **kwargs):
+        attrs = super(SirTrevorWidget, self).build_attrs(extra_attrs, **kwargs)
+
+        sirtrevor_defaults = {
+            'uploadUrl': kwargs.pop('st_upload_url', force_text(settings.SIRTREVOR_UPLOAD_URL)),
+        }
+        attrs['data-sirtrevor-defaults'] = json.dumps(sirtrevor_defaults)
+
+        return attrs
 
     class Media:
         js = [
