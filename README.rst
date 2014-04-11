@@ -148,7 +148,7 @@ Here is a little step-by-step guide:
 
 **myapp/static/sirtrevor/blocks/mycustomblock.js**::
 
-    SirTrevor.Blocks.File = SirTrevor.Block.extend({
+    SirTrevor.Blocks.MyCustomName = SirTrevor.Block.extend({
         type: 'mycustomblock',
         // ...
     }
