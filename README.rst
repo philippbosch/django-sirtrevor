@@ -151,7 +151,7 @@ Here is a little step-by-step guide:
     SirTrevor.Blocks.MyCustomName = SirTrevor.Block.extend({
         type: 'mycustomblock',
         // ...
-    }
+    });
 
 Please refer to *Sir Trevor*'s docs regarding `custom blocks`_ for details
 about the JavaScript part of a custom block.
