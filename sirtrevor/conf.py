@@ -12,6 +12,7 @@ class SirTrevorConf(AppConf):
     UPLOAD_URL = None
     UPLOAD_PATH = 'attachments'
     ATTACHMENT_PROCESSOR = None
+    MARKDOWN_EXTENSIONS = []
 
     def configure_upload_url(self, value):
         if value is not None:
