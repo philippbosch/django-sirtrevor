@@ -50,6 +50,6 @@ def attachment(request):
         data['name'] = os.path.split(data['path'])[1]
         data['size'] = file_.size
 
-        return HttpResponse(json.dumps({'file': data}))
+        return HttpResponse(json.dumps({'file': data}), content_type = 'application/javascript; charset=utf8')
     else:
         return HttpResponse('Error')
