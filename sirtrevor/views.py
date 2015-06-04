@@ -4,6 +4,7 @@ import os
 from django.conf import settings
 from django.core.files.storage import default_storage
 from django.http import HttpResponse
+from django.utils.module_loading import import_string
 from django.utils.text import slugify
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
@@ -11,9 +12,10 @@ from django.contrib.auth.decorators import user_passes_test
 from PIL import Image
 from .forms import AttachmentForm
 
-
 AUTH_TEST = lambda u: u.is_staff
-
+validator = getattr(settings, 'SIRTREVOR_USER_ATTACHMENT_VALIDATOR', False)
+if validator:
+    AUTH_TEST = import_string(validator)
 
 @csrf_exempt
 @require_POST
