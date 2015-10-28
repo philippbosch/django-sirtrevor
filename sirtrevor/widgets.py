@@ -30,10 +30,11 @@ class SirTrevorWidget(forms.Textarea):
         attrs = super(SirTrevorWidget, self).build_attrs(extra_attrs, **kwargs)
 
         sirtrevor_defaults = {
-            'uploadUrl': kwargs.pop('st_upload_url', force_text(settings.SIRTREVOR_UPLOAD_URL)),
+            'uploadUrl': kwargs.pop(
+                'st_upload_url', force_text(settings.SIRTREVOR_UPLOAD_URL)
+            ),
         }
         attrs['data-sirtrevor-defaults'] = json.dumps(sirtrevor_defaults)
-
         return attrs
 
     def _media(self):
@@ -52,11 +53,13 @@ class SirTrevorWidget(forms.Textarea):
 
     class Media:
         js = [
-            'sirtrevor/components/jquery/jquery.min.js',
-            'sirtrevor/components/Eventable/eventable.js',
+            'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js',
+            'http://cdnjs.cloudflare.com/ajax/libs/eventable/1.0.5/eventable.min.js',
+
             'sirtrevor/components/sir-trevor-js/sir-trevor.js',
             'sirtrevor/init.js',
         ]
+
         css = {
             'all': [
                 'sirtrevor/components/sir-trevor-js/sir-trevor.css'

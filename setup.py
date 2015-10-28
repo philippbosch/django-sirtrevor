@@ -12,6 +12,7 @@ setup(
     version='0.2.4',
     packages=['sirtrevor'],
     include_package_data=True,
+    zip_safe=False,
     license='MIT License',
     description='A simple Django app that provides a model field and ' +
                 'corresponding widget based on the fantastic Sir Trevor ' +
