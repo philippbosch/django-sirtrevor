@@ -276,7 +276,7 @@ ul.st-text-block {
   position: absolute; }
 
 .st-block__editor img {
-  width: 100%;
+  width: auto;
   height: auto; }
 
 .st-block__upload-container {
