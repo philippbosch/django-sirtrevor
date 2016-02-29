@@ -58,6 +58,7 @@ class SirTrevorWidget(forms.Textarea):
 
             'sirtrevor/components/sir-trevor-js/sir-trevor.js',
             'sirtrevor/init.js',
+            'filer/js/popup_handling.js',
         ]
 
         css = {
