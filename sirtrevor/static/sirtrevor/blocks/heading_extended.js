@@ -66,10 +66,10 @@
         editorHTML: function() {
             this.heading_id = _.uniqueId('js-heading-');
             this.heading_level = 1;
-            this.heading_text = 'text';
+            this.heading_text = 'Heading';
             //console.log('heading_id: ' + this.heading_id);
             return '<div class="st-text-block--heading" >' + //st-required st-text-block
-                '<h1 id="' + this.heading_id + '" contenteditable="true">Heading' +
+                '<h1 id="' + this.heading_id + '" contenteditable="true">' +
                 '</h1></div>';
         },
 
