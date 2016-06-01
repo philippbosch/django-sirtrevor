@@ -54,6 +54,12 @@
             setLevel(this, 4);
         }
 
+        function setLevel_5(ev) {
+            ev.preventDefault();
+            //console.log( 'setLevel_5' );
+            setLevel(this, 5);
+        }
+
         return SirTrevor.Block.extend({
 
         level_modifier: 1, // all level output is one level higher, e. g. h1 -> h2
@@ -78,7 +84,8 @@
             'h1': setLevel_1,
             'h2': setLevel_2,
             'h3': setLevel_3,
-            'h4': setLevel_4
+            'h4': setLevel_4,
+            'h5': setLevel_5
         },
 
         icon_name: 'heading',
