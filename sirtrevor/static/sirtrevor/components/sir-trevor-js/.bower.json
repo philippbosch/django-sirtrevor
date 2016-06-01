@@ -1,30 +1,36 @@
 {
   "name": "sir-trevor-js",
-  "version": "0.3.2",
   "ignore": [
     "**/.*",
     "node_modules",
     "components",
-    "src",
+    "src/!(blocks)",
     "spec",
     "examples",
     "website",
     "BrowserRunner.html"
   ],
+  "main": [
+    "sir-trevor.js",
+    "sir-trevor.css",
+    "sir-trevor-icons.css"
+  ],
   "dependencies": {
-    "underscore": "~1.4.4",
+    "es5-shim": "~v4.0.3",
+    "es6-shim": "~0.21.0",
     "Eventable": "~1.0.1",
     "jquery": "~1.9.1"
   },
+  "version": "0.5.0",
   "homepage": "https://github.com/madebymany/sir-trevor-js",
-  "_release": "0.3.2",
+  "_release": "0.5.0",
   "_resolution": {
     "type": "version",
-    "tag": "v0.3.2",
-    "commit": "89f86d181e1b980939231271e2509835153fff90"
+    "tag": "v0.5.0",
+    "commit": "ecb1ac1051b5178dc5cdb1d52bc6d1fda4665324"
   },
   "_source": "git://github.com/madebymany/sir-trevor-js.git",
-  "_target": "~0.3.2",
+  "_target": "~0.5.0",
   "_originalSource": "sir-trevor-js",
   "_direct": true
 }

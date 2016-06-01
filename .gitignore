@@ -1,1 +1,4 @@
 *.sqlite3
+
+build/*
+django_sirtrevor.egg-info/*
